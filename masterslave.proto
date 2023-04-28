@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package masterslave;
+
+service MasterSlave {
+  rpc GetData (Request) returns (Response) {}
+  rpc Map (TRequest) returns (TResponse) {}
+  rpc Reduce (TRequest) returns (TResponse) {}
+}
+
+message Request {
+  string name = 1;
+}
+
+message Response {
+  string message = 1;
+}
+
+message TRequest {
+  string data = 1;
+}
+
+message TResponse {
+  repeated KeyValuePair word_count = 1;
+
+  message KeyValuePair {
+    string key = 1;
+    int32 value = 2;
+  }
+}
